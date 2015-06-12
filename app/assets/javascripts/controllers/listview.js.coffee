@@ -1,4 +1,4 @@
-@toprater.controller "ListViewCtrl", [ "$scope", "State", "Alternative", ($scope, State, Alternative) ->
+@toprater.controller "ListViewCtrl", [ "$scope", "$rootScope", "State", "Alternative", ($scope, $rootScope, State, Alternative) ->
 
   $scope.alternatives = []
 
@@ -6,6 +6,10 @@
     criteria = _.pluck State.criteria, 'name'
     Alternative.rate({criteria}).then ->
       $scope.alternatives = Alternative.items
+      $rootScope.$broadcast('update-alternatives')
   State.trigger 'change'
+
+  $scope.hoverCard = (alternative) ->
+  	console.log alternative
 
 ]

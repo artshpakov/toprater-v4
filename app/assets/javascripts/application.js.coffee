@@ -3,6 +3,7 @@
 #= require underscore
 #= require angular
 #= require angular-resource
+#= require gmaps/google
 #= require_self
 #= require_tree .
 

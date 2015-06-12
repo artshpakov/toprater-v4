@@ -1,9 +1,0 @@
-= render partial: "partials/header"
-
-section@list-view ng-controller="ListViewCtrl"
-  ul
-    li ng-repeat="object in alternatives" {{ object.name }}
-
-sass:
-  [role=list-view] > ul
-    margin-left: 30px

@@ -17,7 +17,7 @@ Bundler.require(*Rails.groups)
 
 module Toprater
   class Application < Rails::Application
-    config.autoload_paths += %W(#{ Rails.root }/app/lib)
+    config.autoload_paths += %W(#{ Rails.root }/app/lib #{ Rails.root }/app/serializers)
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.

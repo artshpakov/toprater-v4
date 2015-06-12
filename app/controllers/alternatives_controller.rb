@@ -7,9 +7,11 @@ class AlternativesController < ApplicationController
 
   def index
     respond_to do |format|
-      format.html
+      format.html do
+        render :map
+      end
       format.json do
-        render json: Alternative.rate(params) # TODO inventorize params
+        render json: Alternative.rate(params), root: nil # TODO inventorize params
       end
     end
   end
