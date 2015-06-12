@@ -1,7 +1,10 @@
-ul
-  - @criteria.each do |criterion|
-    li
-      = link_to criterion.label, "javascript:;", role: 'criterion-root'
-      ul
-      	- criterion.subcriteria.each do |subcriterion|
-      	  li = link_to subcriterion.label, "javascript:;"
+@completer ng-controller="CompleterCtrl"
+  @completer-state
+    a.tag ng-repeat="item in State.criteria" ng-click="removeItem(item)" href="javascript:;" {{ item.toString() }}    
+    input ng-model="query" placeholder="Start typing anything"
+  @completer-results ng-show="results"
+    a.tag ng-repeat="result in results | limitTo:20" href="javascript:;" ng-click="pickItem(result)" {{ result.toString() }}
+
+coffee:
+  $('[role=completer-state]').click ->
+  	$('[role=completer-state] input').focus()

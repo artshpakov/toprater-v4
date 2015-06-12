@@ -15,6 +15,10 @@ class ApplicationController < ActionController::Base
   end
 
   def setup
+    State.init! params: params
+
+    gon.state     = State.to_hash
+    gon.criteria  = Criterion.leafs
   end
 
 end

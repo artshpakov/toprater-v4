@@ -6,6 +6,10 @@ Rails.application.routes.draw do
     root to: 'index#index'
     scope ':sphere' do
       root to: 'alternatives#index', as: :sphere
+
+      scope '/objects' do
+        get '(/criteria/:criteria)' => 'alternatives#index', as: :list
+      end
     end
   end
 
