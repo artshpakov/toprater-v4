@@ -10,9 +10,9 @@
       "#{ data.state.locale }/#{ data.state.sphere }/objects"
     $location.url url
 
-
   triggerCallbacks = ->
     cb.call() for cb in callbacks
+
 
   @addCriterion = (criterion, options={}) ->
     @criteria.push criterion unless criterion in @criteria
@@ -22,9 +22,12 @@
     @criteria = _.without @criteria, criterion
     triggerCallbacks() unless options.silent
 
+
   @onChange = (callback) ->
     callbacks.push callback unless callback in callbacks
 
+  @trigger = (event) ->
+    triggerCallbacks() if event is 'change'
 
   _.each data.state.criteria, (name) =>
     @addCriterion Criterion.find(name), silent: true

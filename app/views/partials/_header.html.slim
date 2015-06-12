@@ -1,0 +1,14 @@
+header
+  h1#logo = link_to 'TopRater', root_path, target: '_self'
+
+
+  @completer ng-controller="CompleterCtrl" ng-cloak=true
+    @completer-state
+      a.tag ng-repeat="item in State.criteria" ng-click="removeItem(item)" href="javascript:;" {{ item.toString() }}    
+      input ng-model="query" placeholder="Start typing anything"
+    @completer-results ng-show="results"
+      a.tag ng-repeat="result in results | limitTo:20" href="javascript:;" ng-click="pickItem(result)" {{ result.toString() }}
+
+  coffee:
+    $('[role=completer-state]').click ->
+      $('[role=completer-state] input').focus()

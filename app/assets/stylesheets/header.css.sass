@@ -1,0 +1,46 @@
+@import _settings
+
+header
+  border-bottom: 1px solid $mid-grey
+
+#logo
+  margin: 0 0 16px
+  a
+    text-decoration: none
+
+
+.tag
+  background-color: $links-color
+  padding: 2px 5px
+  color: #fff
+  border-radius: 3px
+  margin-right: 8px
+  font-size: 12px
+  text-decoration: none
+  display: inline-block
+  margin-bottom: 4px
+  &:hover
+    background-color: $links-color-hover
+    color: #fff
+
+
+[role=completer]
+  position: relative
+  [role=completer-state]
+    cursor: text
+    border-radius: 4px
+    padding: 8px 12px 4px
+    border: 1px solid $mid-grey
+    input
+      border: none
+      outline: none
+
+  [role=completer-results]
+    position: absolute
+    margin-top: 4px
+    border: 1px solid $mid-grey
+    padding: 12px 12px 8px
+    overflow: hidden
+    background-color: #fff
+    z-index: 100
+    box-shadow: 0 3px 6px $mid-grey

@@ -3,9 +3,22 @@
  *= require_self
  */
 
+
+@import _settings
+
+*
+  margin: 0
+  padding: 0
+
 body
   font-family: Lucida Grande
 
+a
+  color: $links-color
+  &:hover
+    color: $links-color-hover
+
 #wrapper
-  padding: 30px
-  position: relative
+  header, section
+    padding: 20px 30px
+    position: relative

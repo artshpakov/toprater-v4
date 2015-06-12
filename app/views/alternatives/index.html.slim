@@ -1,10 +1,9 @@
-@completer ng-controller="CompleterCtrl"
-  @completer-state
-    a.tag ng-repeat="item in State.criteria" ng-click="removeItem(item)" href="javascript:;" {{ item.toString() }}    
-    input ng-model="query" placeholder="Start typing anything"
-  @completer-results ng-show="results"
-    a.tag ng-repeat="result in results | limitTo:20" href="javascript:;" ng-click="pickItem(result)" {{ result.toString() }}
+= render partial: "partials/header"
 
-coffee:
-  $('[role=completer-state]').click ->
-  	$('[role=completer-state] input').focus()
+section@list-view ng-controller="ListViewCtrl"
+  ul
+    li ng-repeat="object in alternatives" {{ object.name }}
+
+sass:
+  [role=list-view] > ul
+    margin-left: 30px
