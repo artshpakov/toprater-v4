@@ -2,13 +2,11 @@
 
   @criteria = []
   callbacks = []
-  callbacks.push =>
-    url = if @criteria.length
-      criteriaString = (criterion.name for criterion in @criteria).join(',')
-      "#{ data.state.locale }/#{ data.state.sphere }/objects/criteria/#{ criteriaString }"
-    else
-      "#{ data.state.locale }/#{ data.state.sphere }/objects"
-    $location.url url
+  # callbacks.push =>
+  #   url = "#{ data.state.locale }/#{ data.state.sphere }/objects"
+  #   url = url + "/criteria/" + (criterion.name for criterion in @criteria).join(',') if @criteria.length
+  #   url = url + "/filters/" + ("#{name}/#{value}" for name, value of @filters).join(',') unless _.isEmpty(@filters)
+  #   $location.url url
 
   triggerCallbacks = ->
     cb.call() for cb in callbacks

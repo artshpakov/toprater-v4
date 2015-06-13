@@ -1,0 +1,3 @@
+ul
+  - @catalog.each do |item|
+    li: a href="/en/hotels/objects/filters/catalog:#{item['label']}" = item['name']

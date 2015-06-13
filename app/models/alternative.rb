@@ -11,7 +11,8 @@ class Alternative < Sentimeta::Model
   def self.rate options
     fetch \
       criteria: (options.delete(:criteria) || State.criteria),
-      fields: options
+      filters: {catalog: ["turciya","antaliya",""]}#,
+      # fields: options
   end
 
   def cover
@@ -19,6 +20,10 @@ class Alternative < Sentimeta::Model
     entry.try(:[], 'hash').present? ? "https://api.toprater.com/api/v1/picture?hash=#{ entry['hash'] }" : entry['url']
   rescue
     nil
+  end
+
+  def coordinates
+    { latitude: @coordinates['lat'], longitude: @coordinates['lng'] }
   end
 
 end

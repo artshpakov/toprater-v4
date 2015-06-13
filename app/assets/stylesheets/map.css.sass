@@ -26,3 +26,28 @@ header
   height: 100%
   margin-top: 140px
   border-right: 1px solid $mid-grey
+
+#map
+  width: 700px
+  height: 470px
+  position: absolute
+  right: 0
+  bottom: 0
+  .angular-google-map-container
+    height: 470px
+
+@mixin map-label
+  width: 18px
+  height: 18px
+  line-height: 20px
+  text-align: center
+  color: white
+  padding: 4px
+  border: 1px solid #fff
+  border-radius: 16px
+.map-label
+  +map-label
+  background: $links-color
+.map-label-hovered
+  +map-label
+  background: #458BA5

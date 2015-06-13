@@ -8,7 +8,7 @@ Rails.application.routes.draw do
       root to: 'alternatives#index', as: :sphere
 
       scope '/objects' do
-        get '(/criteria/:criteria)' => 'alternatives#index', as: :list
+        get '(/criteria/:criteria)(/filters/*filters)' => 'alternatives#index', as: :list
       end
     end
   end

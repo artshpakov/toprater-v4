@@ -1,17 +1,21 @@
 = render partial: "partials/header"
 
 script src="//maps.google.com/maps/api/js?v=3.13&amp;sensor=false&amp;libraries=geometry"
-script src='//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js'
 
 
-#wrapper-map
-  #wrapper-map2
-    section@list-view ng-controller="ListViewCtrl"
-      a.card ng-repeat="object in alternatives" ng-mouseover="hoverCard(object)" href="#"
-        .card-image-area style="background-image: url({{ object.cover }})"
-          .card-position {{ $index+1 }}
-        .card-title {{ object.name }}
-#map tr-map=true
+div ng-controller="ListViewCtrl"
+  #wrapper-map
+    #wrapper-map2
+      section@list-view
+        a.card ng-repeat="object in alternatives" ng-mouseover="hoverCard(object)" ng-mouseout="hoverCard(object, false)" href="#"
+          .card-image-area style="background-image: url({{ object.cover }})"
+            .card-position {{ $index+1 }}
+          .card-title {{ object.name }}
+  #map
+    ui-gmap-google-map center="map.center" zoom="map.zoom" bounds="map.bounds" options="options"
+      ui-gmap-marker ng-repeat="marker in map.markers" coords="marker.coordinates" events="marker.events" idkey="marker.id" options="marker.options"
+        ui-gmap-window options="marker.windowOptions" show="currentMarker == marker"
+          div {{ $index+1 }}. {{ marker.name }}
 
 sass:
   [role=list-view] > ul
@@ -41,11 +45,3 @@ sass:
       line-height: 40px
       font-size: 20px
       border-radius: 20px
-
-  #map
-    width: 700px
-    height: 470px
-    border: 1px solid crimson
-    position: absolute
-    right: 0
-    bottom: 0
