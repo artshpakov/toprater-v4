@@ -9,7 +9,8 @@ class AlternativesController < ApplicationController
     respond_to do |format|
       format.html
       format.json do
-        render json: Alternative.rate(params) # TODO inventorize params
+        p params[:filters]
+        render json: Alternative.rate(params.slice(:criteria, :filters)) # TODO inventorize params
       end
     end
   end

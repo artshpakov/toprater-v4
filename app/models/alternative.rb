@@ -10,6 +10,7 @@ class Alternative < Sentimeta::Model
   def self.rate options
     fetch \
       criteria: (options.delete(:criteria) || State.criteria),
+      filters: (options.delete(:filters) || State.filters),
       fields: options
   end
 

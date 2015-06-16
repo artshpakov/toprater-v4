@@ -10,7 +10,7 @@ header
 
 
 .tag
-  background-color: $links-color
+  background-color: $dark-grey
   padding: 2px 5px
   color: #fff
   border-radius: 3px
@@ -20,8 +20,11 @@ header
   display: inline-block
   margin-bottom: 4px
   &:hover
-    background-color: $links-color-hover
     color: #fff
+  &.criterion
+    background-color: $links-color
+    &:hover
+      background-color: $links-color-hover
 
 
 [role=completer]

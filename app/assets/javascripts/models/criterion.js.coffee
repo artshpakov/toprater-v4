@@ -8,8 +8,6 @@
   Criterion.find = (name) ->
     _.findWhere @items, {name}
 
-  Criterion::toString = -> @label
-
   Criterion
 
 ]

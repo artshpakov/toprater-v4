@@ -5,10 +5,10 @@ Rails.application.routes.draw do
   scope '(:locale)', locale: /en|ru/ do
     root to: 'index#index'
     scope ':sphere' do
-      root to: 'alternatives#index', as: :sphere
+      root to: 'index#sphere', as: :sphere
 
       scope '/objects' do
-        get '(/criteria/:criteria)' => 'alternatives#index', as: :list
+        get '(/criteria/:criteria)(/filters/*filters)' => 'alternatives#index', as: :list
       end
     end
   end

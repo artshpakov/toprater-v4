@@ -4,7 +4,8 @@
 
   State.onChange ->
     criteria = _.pluck State.criteria, 'name'
-    Alternative.rate({criteria}).then ->
+    filters  = _.object _.pluck(State.filters, 'name'), _.pluck(State.filters, 'value')
+    Alternative.rate({criteria, filters}).then ->
       $scope.alternatives = Alternative.items
   State.trigger 'change'
 

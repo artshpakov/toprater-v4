@@ -15,6 +15,14 @@ class ApplicationController < ActionController::Base
   end
 
   def setup
+    if request.xhr?
+      if p = params.delete(:p)
+        params.merge! JSON.parse(p)
+      end
+    else
+      ParamsService.decode! params
+    end
+
     State.init! params: params
 
     gon.state     = State.to_hash
