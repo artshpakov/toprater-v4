@@ -1,2 +1,3 @@
-h1 Index#index
-p Find me in app/views/index/index.html.slim
+section
+  - @spheres.each do |sphere|
+    p = link_to sphere['label'], sphere_path(sphere: sphere['name']), target: '_self'

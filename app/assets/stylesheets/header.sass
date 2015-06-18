@@ -1,10 +1,13 @@
 @import _settings
 
 header
+  padding: 8px 30px
+  position: relative
   border-bottom: 1px solid $mid-grey
 
 #logo
-  margin: 0 0 16px
+  font-size: 20px
+  font-weight: normal
   a
     text-decoration: none
 
@@ -26,6 +29,8 @@ header
     &:hover
       background-color: $links-color-hover
 
+section.completer
+  border-bottom: 1px solid $mid-grey
 
 [role=completer]
   position: relative
@@ -37,6 +42,7 @@ header
     input
       border: none
       outline: none
+      margin-bottom: 4px
 
   [role=completer-results]
     position: absolute

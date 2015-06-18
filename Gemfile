@@ -7,6 +7,8 @@ gem 'sentimeta', '~> 0.1.22'
 gem 'pry-rails'
 gem 'slim-rails'
 gem 'gon'
+gem 'draper'
+gem 'active_model_serializers'
 
 gem 'underscore-rails'
 gem 'angularjs-rails'

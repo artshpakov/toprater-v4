@@ -1,9 +1,7 @@
-= render partial: "partials/header"
+section.completer = render partial: "partials/completer"
 
 section@list-view ng-controller="ListViewCtrl"
-  ul
-    li ng-repeat="object in alternatives" {{ object.name }}
-
-sass:
-  [role=list-view] > ul
-    margin-left: 30px
+  a.card ng-repeat="object in alternatives" ng-mouseover="hoverCard(object)" href="#"
+    .card-image-area style="background-image: url({{ object.cover }})"
+      .card-position {{ $index+1 }}
+    .card-title {{ object.name }}

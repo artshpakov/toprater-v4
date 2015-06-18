@@ -1,0 +1,42 @@
+@import _settings
+
+#entries-list
+  width: 372px
+  border-right: 1px solid $mid-grey
+  overflow: hidden
+  float: left
+
+.card
+  display: block
+  width: 180px
+  height: 220px
+  float: left
+  border: 1px solid #bbb
+  margin: 0 7px 10px 0
+  text-decoration: none
+  &:nth-child(even)
+    margin-right: 0
+  .card-image-area
+    padding: 10px
+    height: 120px
+    background-size: cover
+    background-position: center
+    background-color: #ddd
+  .card-title
+    padding: 10px
+  .card-position
+    height: 40px
+    width: 40px
+    background-color: $links-color
+    color: #fff
+    text-align: center
+    line-height: 40px
+    font-size: 20px
+    border-radius: 20px
+  &:hover .card-position
+    background-color: $links-color-hover
+
+#map
+  background-color: #eee
+  height: 505px
+  margin-left: 432px

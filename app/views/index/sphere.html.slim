@@ -1,2 +1,23 @@
-h1 Index#sphere
-p Find me in app/views/index/sphere.html.slim
+section
+  - @presets.each do |preset|
+    = link_to preset['url'], target: '_self', class: 'preset', style: "background-image: url(http://toprater.com/#{ preset['picture'] })" do
+      .label = preset['text1']
+
+sass:
+  .preset
+    display: inline-block
+    height: 340px
+    width: 280px
+    background-size: cover
+    color: #fff
+    text-decoration: none
+    font-size: 18px
+    margin: 0 6px 6px 0
+    position: relative
+    &:hover
+      color: #fff
+    .label
+      position: absolute
+      bottom: 0
+      margin: auto
+      padding: 10px 15px
