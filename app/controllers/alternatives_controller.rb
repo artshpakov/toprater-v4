@@ -1,6 +1,6 @@
 class AlternativesController < ApplicationController
 
-  OBJECTS_PER_PAGE = 6
+  OBJECTS_PER_PAGE = 4
 
   before_action do
     params.reverse_merge! JSON.parse(params.delete(:p)) if params[:p].present?

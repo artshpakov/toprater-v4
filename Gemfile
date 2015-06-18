@@ -19,6 +19,10 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'quiet_assets'
 
+source "https://rails-assets.org" do
+  gem "rails-assets-angular-google-maps"
+end
+
 group :development do
   gem 'thin'
   gem 'better_errors'

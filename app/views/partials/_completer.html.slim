@@ -1,7 +1,7 @@
 @completer ng-controller="CompleterCtrl" ng-cloak=true
   @completer-state
-    a.tag.criterion ng-repeat="item in State.criteria" ng-click="removeItem(item)" href="javascript:;" {{ item.label }}
-    a.tag.filter ng-repeat="item in State.filters" href="javascript:;" {{ item.toString() }}
+    a.tag.criterion ng-repeat="item in State.criteria" ng-click="State.removeCriterion(item)" href="javascript:;" {{ item.label }}
+    a.tag.filter ng-repeat="item in State.filters" ng-click="State.removeFilter(item)" href="javascript:;" {{ item.toString() }}
     input ng-model="query" placeholder="Start typing anything"
   @completer-results ng-show="results.length"
     a.tag.criterion ng-repeat="result in results | limitTo:20" href="javascript:;" ng-click="pickItem(result)" {{ result.label }}

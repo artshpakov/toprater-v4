@@ -11,16 +11,9 @@
     $scope.query = ""
     $scope.results = []
 
-
   $scope.$watch 'query', (query) ->
     $scope.results = if query
       _.filter Criterion.items, (item) -> compare item.label, query
     else []
 
-  $scope.pickItem = (item) ->
-    State.addCriterion item
-
-  $scope.removeItem = (item) ->
-    State.removeCriterion item
-    
 ]

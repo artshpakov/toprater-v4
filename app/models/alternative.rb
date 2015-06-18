@@ -2,7 +2,7 @@ class Alternative < Sentimeta::Model
 
   endpoint :objects
 
-  attr_accessor :id, :full_id, :name, :photos, :coordinates
+  attr_accessor :id, :full_id, :name, :photos, :coordinates, :overall_rating
   include ActiveModel::Serialization
 
   def full_id() @full_id || id end
@@ -19,6 +19,14 @@ class Alternative < Sentimeta::Model
     entry.try(:[], 'hash').present? ? "https://api.toprater.com/api/v1/picture?hash=#{ entry['hash'] }" : entry['url']
   rescue
     nil
+  end
+
+  def coordinates
+    { latitude: @coordinates['lat'], longitude: @coordinates['lng'] } if @coordinates.present?
+  end
+
+  def rating
+    ((overall_rating + 1) * 2.5).round(1) rescue nil
   end
 
 end

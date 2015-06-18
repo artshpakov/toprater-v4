@@ -22,21 +22,42 @@
     background-size: cover
     background-position: center
     background-color: #ddd
+    color: #fff
   .card-title
     padding: 10px
   .card-position
-    height: 40px
-    width: 40px
+    display: inline-block
+    height: 32px
+    width: 32px
     background-color: $links-color
     color: #fff
     text-align: center
-    line-height: 40px
-    font-size: 20px
-    border-radius: 20px
+    line-height: 32px
+    font-size: 16px
+    border-radius: 16px 16px 16px 0
   &:hover .card-position
-    background-color: $links-color-hover
+    background-color: $alternate-color
 
 #map
   background-color: #eee
   height: 505px
   margin-left: 432px
+
+.angular-google-map-container
+  height: 505px
+
+@mixin map-label
+  width: 18px
+  height: 18px
+  line-height: 20px
+  text-align: center
+  color: white
+  padding: 4px
+  border: 1px solid #fff
+  border-radius: 16px
+.map-label
+  +map-label
+  background: $links-color
+.map-label-hovered
+  +map-label
+  background: $alternate-color

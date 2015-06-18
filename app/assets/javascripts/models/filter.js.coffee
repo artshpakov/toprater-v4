@@ -10,6 +10,7 @@
   Filter::toString = ->
     switch @name
       when 'catalog' then "#{ @label }: #{ _.compact @value }"
+      else @label
 
   Filter::toParam = ->
     switch @name

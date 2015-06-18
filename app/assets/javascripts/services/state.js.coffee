@@ -2,16 +2,14 @@
 
   @criteria = []
   @filters  = []
-
-  @items    = []
   callbacks = []
 
   callbacks.push =>
-    @items = _.union @criteria, @filters
-  callbacks.push =>
     url = "#{ data.state.locale }/#{ data.state.sphere }/objects"
     url = url + "/criteria/" + (criterion.name for criterion in @criteria).join(',') if @criteria.length
-    url = url + "/filters/" + ("#{filter.name}/#{_.compact filter.value}" for filter in @filters).join('/') if @filters.length
+    if @filters.length
+      filtersStrings = _.map @filters, (filter) -> "#{ filter.name }/#{ filter.toParam() }" if filter.toParam()
+      url = url + "/filters/" + _.compact(filtersStrings).join('/')
     $location.url url
 
   triggerCallbacks = ->
@@ -23,19 +21,31 @@
     triggerCallbacks() unless options.silent
 
   @removeCriterion = (criterion, options={}) ->
-    @criteria = _.without @criteria, criterion
+    @criteria = _(@criteria).without criterion
     triggerCallbacks() unless options.silent
 
   @addFilter = (filter, options={}) ->
-    @filters.push filter unless filter in @filters
+    @filters.push filter unless filter.name in _.pluck(@filters, 'name')
     triggerCallbacks() unless options.silent
+
+  @removeFilter = (filter, options={}) ->
+    @filters = _(@filters).without filter
+    triggerCallbacks() unless options.silent
+
+
+  @toObject = ->
+    params =
+      criteria: _.pluck(@criteria, 'name')
+      filters:  _.object(_.pluck(@filters, 'name'), _.pluck(@filters, 'value'))
+    delete params.filters.catalog if params.filters.coordinates # which is ugly
+    params
 
 
   @onChange = (callback) ->
     callbacks.push callback unless callback in callbacks
 
-  @trigger = (event) ->
-    triggerCallbacks() if event is 'change'
+  @triggerChange = (event) ->
+    triggerCallbacks()
 
 
   _.each data.state.criteria, (name) =>

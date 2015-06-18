@@ -2,11 +2,15 @@
 
   $scope.alternatives = []
 
-  State.onChange ->
-    criteria = _.pluck State.criteria, 'name'
-    filters  = _.object _.pluck(State.filters, 'name'), _.pluck(State.filters, 'value')
-    Alternative.rate({criteria, filters}).then ->
+  rate = (params) ->
+    Alternative.rate(params).then ->
       $scope.alternatives = Alternative.items
-  State.trigger 'change'
+      $scope.$broadcast 'alternatives:changed', Alternative.items
+
+  State.onChange -> rate State.toObject()
+  State.triggerChange()
+
+  $scope.hoverCard = (alternative, over=true) ->
+    alternative.markerOptions.labelClass = if over then 'map-label-hovered' else 'map-label'
 
 ]

@@ -6,6 +6,7 @@ html
     = include_gon namespace: 'topraterData', camel_case: true
     = javascript_include_tag :application
     = csrf_meta_tags
+    base href="/"
 
   body ng-app="toprater"
   	header = render partial: "partials/header"
