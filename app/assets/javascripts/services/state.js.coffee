@@ -8,8 +8,8 @@
     url = "#{ data.state.locale }/#{ data.state.sphere }/objects"
     url = url + "/criteria/" + (criterion.name for criterion in @criteria).join(',') if @criteria.length
     if @filters.length
-      filtersStrings = _.map @filters, (filter) -> "#{ filter.name }/#{ filter.toParam() }" if filter.toParam()
-      url = url + "/filters/" + _.compact(filtersStrings).join('/')
+      filtersStrings = _.compact _.map @filters, (filter) -> "#{ filter.name }/#{ filter.toParam() }" if filter.toParam()
+      url = url + "/filters/" + filtersStrings.join('/') if filtersStrings.length
     $location.url url
 
   triggerCallbacks = ->

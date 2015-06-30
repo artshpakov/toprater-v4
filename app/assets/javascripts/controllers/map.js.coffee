@@ -14,6 +14,7 @@
   reloadMap = ->
     if listenToMapEvents
       coordinates = MapHelpers.toFilter($scope.map)
+      State.removeFilter 'coordinates', silent: true
       State.addFilter Filter.find('coordinates').setValue coordinates
 
   $scope.map =
